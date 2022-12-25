@@ -1,0 +1,30 @@
+version: 1
+disable_existing_loggers: true
+
+formatters:
+  iso-micros:
+    format: "%(asctime)s\t%(levelname)s\t[%(module)s, %(name)s] %(message)s"
+    datefmt: "%(iso8601us)"
+  iso-micros-utc:
+    format: "%(asctime)s\t%(levelname)s\t[%(module)s, %(name)s] %(message)s"
+    # Default datefmt
+
+handlers:
+  file-iso-micros:
+    class: logging.FileHandler
+    formatter: iso-micros
+    filename: /tmp/test/hs_logging/iso_micros.log
+    mode: w
+  file-iso-micros-utc:
+    class: logging.FileHandler
+    formatter: iso-micros-utc
+    filename: /tmp/test/hs_logging/iso_micros_utc.log
+    mode: w
+
+loggers:
+  logger-test-main:
+    level: INFO
+    handlers: [file-iso-micros, file-iso-micros-utc]
+
+root:
+  level: NOTSET

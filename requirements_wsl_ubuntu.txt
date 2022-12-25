@@ -1,0 +1,14 @@
+pip
+pyyaml
+types-PyYAML
+pytest
+pytest-pylint
+pytest-flake8
+flake8 < 5  # To avoid errors:
+    # AttributeError: module 'flake8.options.config' has no attribute 'ConfigFileFinder
+    # AttributeError: Application' object has no attribute 'parse_preliminary_options
+pytest-mypy
+pytest-html
+pyclean
+
+systemd-python  # If failing with FileNotFoundError: [Errno 2] No such file or directory: 'pkg-config' >> sudo apt install pkg-config
