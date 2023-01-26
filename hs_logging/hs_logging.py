@@ -77,7 +77,7 @@ def logging_setup(
             %(iso8601) = ISO-8601 standard. Example: 2022-11-09T21:34:34+0200
             %(iso8601us) = ISO-8601 standard including microseconds. Example: 2022-11-09T21:34:34.452890+0200
             %(utc) = The logging record time is being converted to UTC time
-            %(tz) = Time zone is represented wit colon. Example: 2022-11-09T21:34:34.452890+02:00 (instead of +0200)
+            %(tz) = Time zone is represented with colon. Example: 2022-11-09T21:34:34.452890+02:00 (instead of +0200)
             %(micros) = Microseconds
     """
 
