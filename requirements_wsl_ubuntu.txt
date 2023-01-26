@@ -11,4 +11,5 @@ pytest-mypy
 pytest-html
 pyclean
 
-systemd-python  # If failing with FileNotFoundError: [Errno 2] No such file or directory: 'pkg-config' >> sudo apt install pkg-config
+## systemd-python  # If failing with FileNotFoundError: [Errno 2] No such file or directory: 'pkg-config' >> sudo apt install pkg-config
+## systemd
