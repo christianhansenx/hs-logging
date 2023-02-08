@@ -1,0 +1,1 @@
+from hs_logging import logging_setup
