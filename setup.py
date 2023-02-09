@@ -1,9 +1,11 @@
 from setuptools import setup, find_packages
-## import codecs
-## import os
+from pathlib import Path
 
-VERSION = '0.0.1'
+VERSION = '0.0.4'
 DESCRIPTION = 'A module for easily setting up standard Python logging.'
+
+this_directory = Path(__file__).parent
+long_description = (this_directory / 'README.md').read_text()
 
 setup(
     name='hs-logging',
@@ -11,7 +13,9 @@ setup(
     author='ChristianHansenX',
     author_email='<christian.hansen.x@gmail.com>',
     description=DESCRIPTION,
-    packages=find_packages(),
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    packages=find_packages(exclude=['testing', ]),
     install_requires=['pyyaml'],
     keywords=['python', 'logging'],
     classifiers=[

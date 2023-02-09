@@ -59,7 +59,7 @@ pip3 install twine
 ```
 Upload to PyPi
 ```
-twine upload dist/*
+twine upload dist/* --verbose --username Hansenspace
 ```
 
 </br>
