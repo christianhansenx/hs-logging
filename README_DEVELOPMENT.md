@@ -1,14 +1,8 @@
-# **hs-logging**
-
- **developer guide**
-
-</br>
-
-## **Continuous Integration**
+# **hs-logging - developer guide**
 The project is developed in Windows WSL: Ubuntu-20.04</br>
 (WSL = Windows Subsystem for Linux)
 
-### **Tools for development**
+### **Development environment**
 #### Create virtual Python environment
 ```bash
 ./create_venv.sh
@@ -42,32 +36,32 @@ deactivate
 ```bash
 ./module_testing.sh
 ```
-
-</br>
-
-
-# **PyPi**
+### **PyPi packaging**
 https://www.youtube.com/watch?v=tEFkHEKypLI  
+https://www.codementor.io/@arpitbhayani/host-your-python-package-using-github-on-pypi-du107t7ku  
+https://www.youtube.com/watch?v=5KEObONUkik  
+https://stackoverflow.com/questions/61156290/how-to-set-project-links-in-pypi  
+
+
+***Note:** Before building package, update VERSION in **setup.py***</br>
 
 Build package
 ```
-python3 setup.py sdist bdist_wheel
-```
-Install twine
-```
-pip3 install twine
-```
-Upload to PyPi
-```
-twine upload dist/* --verbose --username Hansenspace
+./pypi_build.sh
 ```
 
-</br>
+***Note:** Before uploading to PyPi, delete old builds from **dist** folder.*</br>
+
+Upload to PyPi
+```
+twine upload dist/* --verbose
+```
+
 </br>
 
 ## **Code Documentation**
 
 ### **Code comment tags**
-Some code comments begins with a tag to categorize the purpose of the comment:
-- **\<code\>** code not in use but could in the future be relevant
-- **\<link\>** link to code examples, documentation, discussion forums etc.
+Some code comments begins with a tag to categorize the purpose of the comment:</br>
+**\<code\>** code not in use but could in the future be relevant</br>
+**\<link\>** link to code examples, documentation, discussion forums etc.</br>

@@ -1,4 +1,7 @@
-## **TODO**
+## **This file is for my own records as owner/developer of this repository.**</br></br>
+
+
+# **TODO**
 
 - https://ubuntu.com//blog/ubuntu-wsl-enable-systemd
 
@@ -10,9 +13,9 @@ https://raspberrypi.stackexchange.com/questions/108411/raspbian-journalctl-only-
 https://queirozf.com/entries/log-rotation-in-python-reference-and-examples
 https://github.com/Preston-Landers/concurrent-log-handler
 
+</br>
 
-</br></br>
-## **NOTES**
+# **NOTES**
 
 https://pypi.org/project/piview/#description
 
