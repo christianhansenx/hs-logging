@@ -1,5 +1,6 @@
 # Standard Python modules
 from dataclasses import dataclass
+import pytest
 from py.xml import html  # pylint: disable=(import-error, no-name-in-module, wrong-import-order)
 
 # First party external modules
@@ -28,9 +29,7 @@ def pytest_collection_modifyitems(session, config, items):  # pylint: disable=(u
         lint_items = []
         for linter in ['pylint', 'flake8', 'mypy']:
             if config.getoption(f'--{linter}'):
-                lint_items.extend(
-                    [item for item in items if item.get_closest_marker(linter)]
-                )
+                lint_items.extend([item for item in items if item.get_closest_marker(linter)])
         items[:] = lint_items
 
 
@@ -49,11 +48,16 @@ def pytest_html_report_title(report):
 
 
 def pytest_html_results_table_header(cells):
+    cells.insert(0, html.th('ID', class_='sortable'))  # Add test ID number header
+    # if pytest_test_data.only_linting:
+    #     cells[1] = html.th('File::linter', class_='sortable')
     cells.pop()  # Remove "Links" header
-    if pytest_test_data.only_linting:
-        cells[1] = html.th('File::linter', class_='sortable')
 
 
 def pytest_html_results_table_row(report, cells):
+    pytest_test_data.report_line_id += 1
+    id_string = str(pytest_test_data.report_line_id).rjust(8)  # rjust necessary for correct sorting
+    cells.insert(0, html.th(id_string))
+
     _ = report  # To avoid PYLINT 'Unused argument'
     cells.pop()  # Remove "Links" column cell
