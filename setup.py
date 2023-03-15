@@ -1,5 +1,5 @@
-from setuptools import setup, find_packages
 from pathlib import Path
+from setuptools import setup, find_packages
 
 VERSION = '0.0.4'
 DESCRIPTION = 'A module for easily setting up standard Python logging.'

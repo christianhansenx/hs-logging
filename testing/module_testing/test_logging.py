@@ -12,8 +12,7 @@ from hs_logging.hs_logging import logging_setup, _LoggingFormatter
 
 
 @pytest.mark.parametrize('test_step', [  # <link> https://www.unixtimestamp.com/
-    ({'tz': 'CST-1', 'handler': 'file-iso-micros', 'expected': '2022-12-09T11:13:09.000001+0100', 'epoch': 1670580789}),
-
+    ({'tz': 'CST-1', 'handler': 'file-iso-micros', 'expected': '2022-12-09T11:13:09.000001+0100', 'epoch': 1670580789.000001}),
     ({'tz': 'CST-1', 'handler': 'file-iso-micros', 'expected': '2022-12-09T11:13:09.000000+0100', 'epoch': 1670580789.000000}),
     ({'tz': 'CST+8', 'handler': 'file-iso-micros', 'expected': '2022-12-09T02:13:09.999999-0800', 'epoch': 1670580789.999999}),
     ({'tz': 'CST-1', 'handler': 'file-iso-micros-utc', 'expected': '2022-12-09T10:13:09.000100+0000', 'epoch': 1670580789.0001}),

@@ -1,6 +1,5 @@
 # Standard Python modules
 from dataclasses import dataclass
-import pytest
 from py.xml import html  # pylint: disable=(import-error, no-name-in-module, wrong-import-order)
 
 # First party external modules
