@@ -1,11 +1,11 @@
 from pathlib import Path
 from setuptools import setup, find_packages
 
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 DESCRIPTION = 'A module for easily setting up standard Python logging.'
 
 this_directory = Path(__file__).parent
-long_description = (this_directory / 'README_USER.md').read_text()
+long_description = (this_directory / 'README.md').read_text()
 
 setup(
     name='hs-logging',

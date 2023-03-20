@@ -69,3 +69,56 @@ Standard formatting's: https://docs.python.org/3/library/logging.html#formatter-
 </br>
 
 ## **Yaml Setup File Example**
+
+```yaml
+version: 1
+disable_existing_loggers: true
+
+formatters:
+  console-fmt:
+    format: "%(asctime)s [%(module)s, %(name)s] %(message)s\n"
+  file-data-fmt:  # Includes computer/device host name
+    format: "%(asctime)s\t%(hostname)s\t%(message)s"
+    datefmt: "%(utc)%(iso8601ms)"
+  journal-fmt:
+    format: "%(levelname)-10s[%(name)s] %(message)s"
+  journal-fake-fmt:
+    format: "%(asctime)s %(pathname)s[%(process)d]: %(levelname)-10s[%(name)s] %(message)s"
+    datefmt: "%(utc)%(iso8601us)"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: console-fmt
+    stream: ext://sys.stdout
+  file-data:
+    class: logging.handlers.RotatingFileHandler
+    formatter: file-data-fmt
+    maxBytes: 1_000_000
+    backupCount: 6
+    filename: /tmp/test/data.log
+  journal-handler:  # Requires systemctl
+    class: systemd.journal.JournalHandler
+    level: DEBUG
+    formatter: journal-fmt
+    fakejournal: journal-fake-handler
+  journal-fake-handler:
+    class: logging.handlers.RotatingFileHandler
+    maxBytes: 1_000_000
+    backupCount: 6
+    filename: /var/log/journal/logging_fake_journal.log
+    formatter: journal-fake-fmt
+ 
+loggers:
+  main:
+    level: INFO
+    handlers: [console, journal-handler]
+  data:
+    handlers: [console, file-data]
+  exception:
+    handlers: [file-main, journal-handler]
+ 
+root:
+  level: NOTSET
+  # handlers: [console-main]  # This would pipe all handlers output to console
+```
