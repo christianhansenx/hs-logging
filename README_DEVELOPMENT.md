@@ -1,11 +1,11 @@
 # **hs-logging - developer guide**
-The project is developed in Windows WSL: Ubuntu-20.04</br>
+The project is developed in Windows WSL: Ubuntu-22.04</br>
 (WSL = Windows Subsystem for Linux)
 
 ### **Development environment**
 #### Create virtual Python environment
 ```bash
-./create_venv.sh
+. create_venv.sh
 ```
 #### Activate the virtual Python environment
 ```bash
