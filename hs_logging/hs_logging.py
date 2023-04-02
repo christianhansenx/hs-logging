@@ -16,6 +16,7 @@ import yaml
 
 DEFAULT_TIME_FORMAT = '%(utc)%(iso8601us)'  # Used if no time format is provided for a logger
 DEFAULT_EXCEPTION_LOGGER = 'exception'
+EXCEPTION_POST_LOG_MSG = 'Application terminated due to exception'
 
 
 class LoggingSetupException(BaseException):
@@ -23,14 +24,17 @@ class LoggingSetupException(BaseException):
         super().__init__(message)
 
 
-def exception_post_logging(exception_logger: Optional[logging.Logger] = None) -> None:
+def exception_post_log(exception_logger: Optional[logging.Logger] = None) -> None:
     """
-    A call back function for logging_setup function.
+    A call back function for logging_setup function to log an exception.
 
     :param exception_logger: Logger of exceptions.
+        If set to None then the exception is not logged.
+
+    :return: None
     """
     if exception_logger is not None:
-        exception_logger.critical('Application terminated due to exception')
+        exception_logger.critical(EXCEPTION_POST_LOG_MSG)
     exit_code = 1
     os._exit(exit_code)  # pylint: disable=(protected-access)
 
@@ -39,7 +43,7 @@ def exception_post_logging(exception_logger: Optional[logging.Logger] = None) ->
 def logging_setup(
     configuration_file_path: str,
     exception_logger_name: Optional[str] = DEFAULT_EXCEPTION_LOGGER,
-    exception_post: Optional[Callable[[Optional[logging.Logger]], None]] = exception_post_logging,
+    exception_post: Optional[Callable[[Optional[logging.Logger]], None]] = exception_post_log,
     fake_journal: Optional[bool] = None,
 ) -> Any:
     """
